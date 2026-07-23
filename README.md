@@ -56,7 +56,7 @@ taskflow-pro/
 Open psql or pgAdmin and run:
 
 ```sql
-CREATE DATABASE taskflow_pro;
+CREATE DATABASE taskflowpro;
 ```
 
 ---
@@ -74,7 +74,7 @@ Edit `.env`:
 PORT=5000
 DB_HOST=localhost
 DB_PORT=5432
-DB_NAME=taskflow_pro
+DB_NAME=taskflowpro
 DB_USER=postgres
 DB_PASSWORD=your_postgres_password
 JWT_SECRET=any-long-random-string-here
