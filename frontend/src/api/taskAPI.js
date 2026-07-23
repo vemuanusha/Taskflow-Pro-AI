@@ -1,11 +1,5 @@
-import axios from "axios";
+import api from "./api";
 
-// Create axios instance
-const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-});
-
-// Task API
 export const taskAPI = {
   getAll: (params = {}) => api.get("/api/tasks", { params }),
   get: (id) => api.get(`/api/tasks/${id}`),
@@ -26,13 +20,11 @@ export const taskAPI = {
       status,
     }),
 
-  // Projects
   getProjects: () => api.get("/api/projects"),
   createProject: (data) => api.post("/api/projects", data),
   updateProject: (id, data) => api.put(`/api/projects/${id}`, data),
   deleteProject: (id) => api.delete(`/api/projects/${id}`),
 
-  // Comments
   getComments: (taskId) =>
     api.get(`/api/tasks/${taskId}/comments`),
 
@@ -42,7 +34,6 @@ export const taskAPI = {
   deleteComment: (taskId, commentId) =>
     api.delete(`/api/tasks/${taskId}/comments/${commentId}`),
 
-  // AI Features
   ai: {
     suggestPriority: (data) =>
       api.post("/api/ai/suggest-priority", data),
@@ -71,12 +62,9 @@ export const taskAPI = {
       api.get("/api/ai/deadline-risk"),
   },
 
-  // Analytics
   productivity: () =>
     api.get("/api/analytics/productivity"),
 
   dashboardOverview: () =>
     api.get("/api/dashboard/overview"),
 };
-
-export default api;
