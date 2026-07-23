@@ -1,4 +1,4 @@
-# TaskFlow Pro
+# TaskFlow Pro AI
 
 A full-stack task management application built with **React**, **Node.js**, **Express.js**, **PostgreSQL**, and **Groq AI (Llama 3.3 70B)**.
 
