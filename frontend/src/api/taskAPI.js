@@ -1,0 +1,33 @@
+import axios from 'axios';
+export const taskAPI = {
+  getAll:         (params={}) => axios.get('/api/tasks', { params }),
+  get:            (id)        => axios.get(`/api/tasks/${id}`),
+  create:         (data)      => axios.post('/api/tasks', data),
+  update:         (id, data)  => axios.put(`/api/tasks/${id}`, data),
+  patch:          (id, data)  => axios.patch(`/api/tasks/${id}`, data),
+  delete:         (id)        => axios.delete(`/api/tasks/${id}`),
+  stats:          ()          => axios.get('/api/tasks/stats'),
+  overdue:        ()          => axios.get('/api/tasks/overdue'),
+  export:         ()          => axios.get('/api/tasks/export', { responseType: 'blob' }),
+  move:           (id, status)=> axios.patch(`/api/tasks/${id}/move`, { status }),
+  getProjects:    ()          => axios.get('/api/projects'),
+  createProject:  (data)      => axios.post('/api/projects', data),
+  updateProject:  (id,d)      => axios.put(`/api/projects/${id}`, d),
+  deleteProject:  (id)        => axios.delete(`/api/projects/${id}`),
+  getComments:    (tid)       => axios.get(`/api/tasks/${tid}/comments`),
+  addComment:     (tid, data) => axios.post(`/api/tasks/${tid}/comments`, data),
+  deleteComment:  (tid, cid)  => axios.delete(`/api/tasks/${tid}/comments/${cid}`),
+  // AI features
+  ai: {
+    suggestPriority:    (data) => axios.post('/api/ai/suggest-priority', data),
+    breakdown:          (data) => axios.post('/api/ai/breakdown', data),
+    improveDescription: (data) => axios.post('/api/ai/improve-description', data),
+    dailySummary:       ()     => axios.get('/api/ai/daily-summary'),
+    chat:               (data) => axios.post('/api/ai/chat', data),
+    workloadAnalysis:   ()     => axios.post('/api/ai/workload-analysis'),
+    generateSchedule:   (persist=false) => axios.post('/api/ai/generate-schedule', { persist }),
+    deadlineRisk:       ()     => axios.get('/api/ai/deadline-risk'),
+  },
+  productivity: () => axios.get('/api/analytics/productivity'),
+  dashboardOverview: () => axios.get('/api/dashboard/overview'),
+};
