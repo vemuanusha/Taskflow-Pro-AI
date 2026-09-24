@@ -359,26 +359,7 @@ POST /api/ai/chat
 
 ---
 
-## MongoDB Connection
 
-The backend connects to MongoDB using **Mongoose**.
-
-Example:
-
-```javascript
-const mongoose = require("mongoose");
-
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log("MongoDB connected successfully");
-  })
-  .catch((error) => {
-    console.error("MongoDB connection error:", error);
-  });
-```
-
----
 
 ## Authentication
 
@@ -396,100 +377,6 @@ The authentication system includes:
 
 ---
 
-## AI Integration
 
-TaskFlow Pro AI uses **Groq API** with:
-
-```text
-Model: Llama 3.3 70B Versatile
-```
-
-AI is used for:
-
-* Task priority suggestions
-* Task description improvement
-* Task breakdown
-* Daily productivity summaries
-* AI-powered chat
-* Task planning assistance
-
----
-
-## Common Issues
-
-### "GROQ_API_KEY not set"
-
-Add your Groq API key to:
-
-```text
-backend/.env
-```
-
-Example:
-
-```env
-GROQ_API_KEY=your_actual_api_key
-```
-
----
-
-### MongoDB Connection Error
-
-If you see:
-
-```text
-MongoServerSelectionError
-```
-
-Check:
-
-1. MongoDB Atlas cluster is running.
-2. MongoDB username and password are correct.
-3. Your IP address is allowed in MongoDB Atlas Network Access.
-4. `MONGODB_URI` is correctly added to `.env`.
-
-Example:
-
-```env
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/taskflowpro
-```
-
----
-
-### "MONGODB_URI is undefined"
-
-Make sure the `.env` file is inside:
-
-```text
-backend/.env
-```
-
-and contains:
-
-```env
-MONGODB_URI=your_mongodb_connection_string
-```
-
-Also make sure the backend loads environment variables using:
-
-```javascript
-require("dotenv").config();
-```
-
----
-
-### Port Already in Use
-
-If port `5000` is already being used, change:
-
-```env
-PORT=5000
-```
-
-to:
-
-```env
-PORT=5001
-```
 
 T
